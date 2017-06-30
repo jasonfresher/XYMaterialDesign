@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_LinearLayoutManager_HORIZATOAL"
+        android:orderInCategory="100"
+        android:title="LinearLayoutManager_HORIZATOAL"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_LinearLayoutManager_VERTICAL"
+        android:orderInCategory="100"
+        android:title="LinearLayoutManager_VERTICAL"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_GridLayoutManager"
+        android:orderInCategory="100"
+        android:title="GridLayoutManager"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_StaagerLayoutManager"
+        android:orderInCategory="100"
+        android:title="StaggerLayoutManager"
+        app:showAsAction="never" />
+</menu>

@@ -1,11 +1,13 @@
 package com.xy.materialdesign;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -52,5 +54,10 @@ public class MainActivity extends AppCompatActivity {
         PopupMenu popupMenu = new PopupMenu(this,view);
         popupMenu.getMenuInflater().inflate(R.menu.main,popupMenu.getMenu());
         popupMenu.show();
+    }
+
+    public void toRecyclerView(View view){
+        Intent intent = new Intent(this,RecyclerViewActivity.class);
+        startActivity(intent);
     }
 }
