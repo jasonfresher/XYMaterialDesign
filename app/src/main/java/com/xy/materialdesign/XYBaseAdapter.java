@@ -42,7 +42,7 @@ public abstract class XYBaseAdapter<T> extends RecyclerView.Adapter<XYBaseAdapte
         if(mIsStaggerLayout){
             lp.height = (300 + (position % 3) * 30);
         }else{
-            lp.height = 200;
+            lp.height = 100;
         }
         holder.itemView.setOnClickListener(new XYOnItemClickListener(holder.getLayoutPosition()));
         bindData(holder, position);
@@ -55,6 +55,43 @@ public abstract class XYBaseAdapter<T> extends RecyclerView.Adapter<XYBaseAdapte
     public int getItemCount() {
         return mItems.size();
     }
+
+
+
+    /**
+     * 刷新数据
+     * @param datas
+     */
+    public void refresh(List<T> datas){
+        this.mItems.clear();
+        this.mItems.addAll(datas);
+        notifyDataSetChanged();
+    }
+
+    /**
+     * 添加数据
+     * @param datas
+     */
+    public void addData(List<T> datas){
+        this.mItems.addAll(datas);
+        notifyDataSetChanged();
+    }
+
+    public void addData(T t,int position){
+        this.mItems.add(position,t);
+        notifyItemInserted(position);
+    }
+
+    public void removeData(int position){
+        this.mItems.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void removeData(){
+        this.mItems.clear();
+        notifyDataSetChanged();
+    }
+
 
     class XYViewHolder extends RecyclerView.ViewHolder {
 

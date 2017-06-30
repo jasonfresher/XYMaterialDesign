@@ -10,6 +10,7 @@ import java.util.List;
 
 public class XYAdapter extends XYBaseAdapter<String> {
 
+
     public XYAdapter(List<String> items) {
         super(items);
     }

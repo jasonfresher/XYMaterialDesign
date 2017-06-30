@@ -7,11 +7,27 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:title="@string/app_name"
         android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        toolbar:navigationIcon="@mipmap/ic_launcher"
-        android:layout_height="?attr/actionBarSize" />
+        android:title="@string/app_name"
+        toolbar:navigationIcon="@mipmap/ic_launcher" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="addItem"
+        android:text="添加item" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="removeItem"
+        android:text="删除item" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refresh_layout"

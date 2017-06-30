@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -57,7 +58,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
             }
         });
 
-
         rv = (RecyclerView) findViewById(R.id.recyclerview);
         rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
@@ -69,8 +69,16 @@ public class RecyclerViewActivity extends AppCompatActivity {
             }
         });
         rv.setAdapter(xyAdapter);
+        rv.setItemAnimator(new DefaultItemAnimator());
     }
 
+    public void addItem(View view){
+        xyAdapter.addData("add item",3);
+    }
+
+    public void removeItem(View view){
+        xyAdapter.removeData(3);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
