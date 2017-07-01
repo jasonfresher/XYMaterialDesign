@@ -29,7 +29,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     private RecyclerView rv;
     private List<String> items;
     private XYBaseAdapter<String> xyAdapter;
-
+    private DividerItemDecoration dividerItemDecoration;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,6 +70,8 @@ public class RecyclerViewActivity extends AppCompatActivity {
         });
         rv.setAdapter(xyAdapter);
         rv.setItemAnimator(new DefaultItemAnimator());
+        dividerItemDecoration =  new DividerItemDecoration(this,LinearLayoutManager.VERTICAL);
+        rv.addItemDecoration(dividerItemDecoration);
     }
 
     public void addItem(View view){
@@ -87,13 +89,18 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+        rv.removeItemDecoration(dividerItemDecoration);
         switch (item.getItemId()) {
             case R.id.action_LinearLayoutManager_HORIZATOAL:
                 xyAdapter.setStaggerLayout(false);
+                dividerItemDecoration =  new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL);
+                rv.addItemDecoration(dividerItemDecoration);
                 rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
                 break;
             case R.id.action_LinearLayoutManager_VERTICAL:
                 xyAdapter.setStaggerLayout(false);
+                dividerItemDecoration =  new DividerItemDecoration(this,LinearLayoutManager.VERTICAL);
+                rv.addItemDecoration(dividerItemDecoration);
                 rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
                 break;
             case R.id.action_GridLayoutManager:
