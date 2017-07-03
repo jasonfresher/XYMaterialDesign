@@ -31,7 +31,7 @@ public abstract class XYBaseAdapter<T> extends RecyclerView.Adapter<XYBaseAdapte
 
     @Override
     public XYViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item, parent, false);
+        View root = LayoutInflater.from(parent.getContext()).inflate(getContentLayoutId(), parent, false);
         XYViewHolder viewHolder = new XYViewHolder(root);
         return viewHolder;
     }
@@ -48,6 +48,8 @@ public abstract class XYBaseAdapter<T> extends RecyclerView.Adapter<XYBaseAdapte
         bindData(holder, position);
     }
 
+    protected abstract int getContentLayoutId();
+
     protected abstract void bindData(XYViewHolder holder, int position);
 
 
@@ -55,7 +57,6 @@ public abstract class XYBaseAdapter<T> extends RecyclerView.Adapter<XYBaseAdapte
     public int getItemCount() {
         return mItems.size();
     }
-
 
 
     /**
@@ -91,7 +92,6 @@ public abstract class XYBaseAdapter<T> extends RecyclerView.Adapter<XYBaseAdapte
         this.mItems.clear();
         notifyDataSetChanged();
     }
-
 
     class XYViewHolder extends RecyclerView.ViewHolder {
 

@@ -29,7 +29,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     private RecyclerView rv;
     private List<String> items;
     private XYBaseAdapter<String> xyAdapter;
-    private DividerItemDecoration dividerItemDecoration;
+    private RecyclerView.ItemDecoration dividerItemDecoration;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         items = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 90; i++) {
             items.add("条目" + i);
         }
 
@@ -59,8 +59,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
         });
 
         rv = (RecyclerView) findViewById(R.id.recyclerview);
-        rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
         xyAdapter = new XYAdapter(items);
         xyAdapter.setOnItemClickListener(new XYBaseAdapter.OnItemClickListener() {
             @Override
@@ -68,9 +66,10 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 Toast.makeText(RecyclerViewActivity.this, "点击" + position, Toast.LENGTH_SHORT).show();
             }
         });
+        rv.setLayoutManager(new GridLayoutManager(this,3));
         rv.setAdapter(xyAdapter);
         rv.setItemAnimator(new DefaultItemAnimator());
-        dividerItemDecoration =  new DividerItemDecoration(this,LinearLayoutManager.VERTICAL);
+        dividerItemDecoration =  new GridItemDecoration(this);
         rv.addItemDecoration(dividerItemDecoration);
     }
 
@@ -105,6 +104,8 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 break;
             case R.id.action_GridLayoutManager:
                 xyAdapter.setStaggerLayout(false);
+                dividerItemDecoration =  new GridItemDecoration(this);
+                rv.addItemDecoration(dividerItemDecoration);
                 rv.setLayoutManager(new GridLayoutManager(this, 3));
                 break;
             case R.id.action_StaagerLayoutManager:

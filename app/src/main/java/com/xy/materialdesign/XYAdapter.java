@@ -16,6 +16,11 @@ public class XYAdapter extends XYBaseAdapter<String> {
     }
 
     @Override
+    protected int getContentLayoutId() {
+        return R.layout.recyclerview_item;
+    }
+
+    @Override
     protected void bindData(XYViewHolder holder, int position) {
         TextView tv = (TextView) holder.findView(R.id.content);
         tv.setText(mItems.get(position) + "");

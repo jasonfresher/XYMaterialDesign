@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -61,7 +62,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         for (int i = 0; i < parent.getChildCount(); i++) {
             View childView = parent.getChildAt(i);
             RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) childView.getLayoutParams();
-            int top = childView.getBottom() + params.topMargin;
+            int top = childView.getBottom() + params.topMargin + Math.round(ViewCompat.getTranslationY(childView));
             int bottom = top + dividerDrawable.getIntrinsicHeight();
             dividerDrawable.setBounds(left, top, right, bottom);
             dividerDrawable.draw(c);
