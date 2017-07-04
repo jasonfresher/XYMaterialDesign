@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,23 +22,25 @@ import android.widget.Toast;
 import com.xy.materialdesign.R;
 import com.xy.materialdesign.adapter.XYAdapter;
 import com.xy.materialdesign.adapter.XYBaseAdapter;
+import com.xy.materialdesign.animation.XYItemTouchHelperCallBack;
 import com.xy.materialdesign.divider.DividerItemDecoration;
 import com.xy.materialdesign.divider.GridItemDecoration;
 import com.xy.materialdesign.widget.XYRecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by jason on 2017/6/30.
  */
 
-public class RecyclerViewActivity extends AppCompatActivity {
+public class RecyclerViewActivity extends AppCompatActivity{
 
     private Handler handler = new Handler();
     private XYRecyclerView rv;
     private List<String> items;
-    private XYBaseAdapter<String> xyAdapter;
+    private XYAdapter xyAdapter;
     private RecyclerView.ItemDecoration dividerItemDecoration;
 
     @Override
@@ -106,6 +109,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
          */
         dividerItemDecoration =  new DividerItemDecoration(this,LinearLayoutManager.VERTICAL);
         rv.addItemDecoration(dividerItemDecoration);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new XYItemTouchHelperCallBack(xyAdapter));
+        itemTouchHelper.attachToRecyclerView(rv);
     }
 
     /**

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Created by jason on 2017/7/4.
  */
 
-public class HeaderViewAdapter extends RecyclerView.Adapter {
+public class HeaderViewAdapter extends RecyclerView.Adapter{
 
     private ArrayList<View> mHeaderViewInfos;
     private ArrayList<View> mfooterViewInfos;

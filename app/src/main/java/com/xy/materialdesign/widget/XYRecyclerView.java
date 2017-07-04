@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.xy.materialdesign.adapter.HeaderViewAdapter;
@@ -14,12 +15,12 @@ import java.util.ArrayList;
  * Created by jason on 2017/7/4.
  */
 
-public class XYRecyclerView extends RecyclerView {
+public class XYRecyclerView extends RecyclerView{
 
     private final RecyclerView.AdapterDataObserver mDataObserver = new DataObserver();
     private HeaderViewAdapter mWrapAdapter;
-    ArrayList<View> mHeaderViewInfos = new ArrayList();
-    ArrayList<View> mFooterViewInfos = new ArrayList();
+    private ArrayList<View> mHeaderViewInfos = new ArrayList();
+    private ArrayList<View> mFooterViewInfos = new ArrayList();
     private boolean isRegisterDataObserver;
 
     public XYRecyclerView(Context context, @Nullable AttributeSet attrs) {
@@ -36,6 +37,9 @@ public class XYRecyclerView extends RecyclerView {
         mFooterViewInfos.add(v);
     }
 
+    public int getHeaderViewCount(){
+        return mHeaderViewInfos.size();
+    }
 
     @Override
     public void setAdapter(Adapter adapter) {
@@ -59,6 +63,7 @@ public class XYRecyclerView extends RecyclerView {
     private class DataObserver extends RecyclerView.AdapterDataObserver {
         @Override
         public void onChanged() {
+            Log.d("jason","onChanged");
             Adapter<?> adapter = getAdapter();
             if (adapter != null) {
                 adapter.notifyDataSetChanged();
@@ -67,23 +72,25 @@ public class XYRecyclerView extends RecyclerView {
 
         @Override
         public void onItemRangeChanged(int positionStart, int itemCount) {
-             mWrapAdapter.notifyItemRangeChanged(positionStart + mWrapAdapter.getHeaderViewsCount() + 1, itemCount);
+            Log.d("jason","onItemRangeChanged");
+            mWrapAdapter.notifyItemRangeChanged(positionStart + mWrapAdapter.getHeaderViewsCount(), itemCount);
         }
 
         @Override
         public void onItemRangeInserted(int positionStart, int itemCount) {
-            mWrapAdapter.notifyItemRangeInserted(positionStart + mWrapAdapter.getHeaderViewsCount() + 1, itemCount);
+            Log.d("jason","onItemRangeInserted");
+            mWrapAdapter.notifyItemRangeInserted(positionStart + mWrapAdapter.getHeaderViewsCount(), itemCount);
         }
 
         @Override
         public void onItemRangeRemoved(int positionStart, int itemCount) {
-            mWrapAdapter.notifyItemRangeRemoved(positionStart + mWrapAdapter.getHeaderViewsCount() + 1, itemCount);
+            Log.d("jason","onItemRangeRemoved");
+            mWrapAdapter.notifyItemRangeRemoved(positionStart + mWrapAdapter.getHeaderViewsCount(), itemCount);
         }
 
         @Override
         public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
-            int headerViewsCountCount = mWrapAdapter.getHeaderViewsCount();
-            mWrapAdapter.notifyItemRangeChanged(fromPosition + headerViewsCountCount + 1, toPosition + headerViewsCountCount + 1 + itemCount);
+            mWrapAdapter.notifyItemMoved(fromPosition,toPosition);
         }
     }
 
