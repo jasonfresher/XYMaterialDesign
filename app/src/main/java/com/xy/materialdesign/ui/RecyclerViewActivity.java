@@ -66,7 +66,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 }, 2000);
             }
         });
-
         rv = (XYRecyclerView) findViewById(R.id.recyclerview);
         xyAdapter = new XYAdapter(items);
         xyAdapter.setOnItemClickListener(new XYBaseAdapter.OnItemClickListener() {
