@@ -1,4 +1,4 @@
-package com.xy.materialdesign;
+package com.xy.materialdesign.ui;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,10 +11,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.xy.materialdesign.R;
+import com.xy.materialdesign.adapter.XYAdapter;
+import com.xy.materialdesign.adapter.XYBaseAdapter;
+import com.xy.materialdesign.divider.DividerItemDecoration;
+import com.xy.materialdesign.divider.GridItemDecoration;
+import com.xy.materialdesign.widget.XYRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +35,7 @@ import java.util.List;
 public class RecyclerViewActivity extends AppCompatActivity {
 
     private Handler handler = new Handler();
-    private RecyclerView rv;
+    private XYRecyclerView rv;
     private List<String> items;
     private XYBaseAdapter<String> xyAdapter;
     private RecyclerView.ItemDecoration dividerItemDecoration;
@@ -58,7 +67,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
             }
         });
 
-        rv = (RecyclerView) findViewById(R.id.recyclerview);
+        rv = (XYRecyclerView) findViewById(R.id.recyclerview);
         xyAdapter = new XYAdapter(items);
         xyAdapter.setOnItemClickListener(new XYBaseAdapter.OnItemClickListener() {
             @Override
@@ -66,17 +75,52 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 Toast.makeText(RecyclerViewActivity.this, "点击" + position, Toast.LENGTH_SHORT).show();
             }
         });
-        rv.setLayoutManager(new GridLayoutManager(this,3));
+        rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        /**
+         * 添加头部view
+         */
+        TextView tv = new TextView(this);
+        tv.setTextSize(20);
+        tv.setGravity(Gravity.CENTER);
+        tv.setText("this is a title");
+        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(params);
+        rv.addHeaderView(tv);
+
+        /**
+         * 添加尾部view
+         */
+        TextView tv2 = new TextView(this);
+        tv2.setTextSize(20);
+        tv2.setGravity(Gravity.CENTER);
+        tv2.setText("this is a footer");
+        RecyclerView.LayoutParams params2 = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT);
+        tv2.setLayoutParams(params2);
+        rv.addFooterView(tv2);
+
         rv.setAdapter(xyAdapter);
         rv.setItemAnimator(new DefaultItemAnimator());
-        dividerItemDecoration =  new GridItemDecoration(this);
+
+        /**
+         * 添加条目间隔线
+         */
+        dividerItemDecoration =  new DividerItemDecoration(this,LinearLayoutManager.VERTICAL);
         rv.addItemDecoration(dividerItemDecoration);
     }
 
+    /**
+     * 添加一个item
+     * @param view
+     */
     public void addItem(View view){
         xyAdapter.addData("add item",3);
     }
 
+    /**
+     * 删除一个item
+     * @param view
+     */
     public void removeItem(View view){
         xyAdapter.removeData(3);
     }

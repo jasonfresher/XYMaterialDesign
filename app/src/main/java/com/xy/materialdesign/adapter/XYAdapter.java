@@ -1,6 +1,8 @@
-package com.xy.materialdesign;
+package com.xy.materialdesign.adapter;
 
 import android.widget.TextView;
+
+import com.xy.materialdesign.R;
 
 import java.util.List;
 

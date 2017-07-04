@@ -1,4 +1,4 @@
-package com.xy.materialdesign;
+package com.xy.materialdesign.divider;
 
 import android.content.Context;
 import android.content.res.TypedArray;
