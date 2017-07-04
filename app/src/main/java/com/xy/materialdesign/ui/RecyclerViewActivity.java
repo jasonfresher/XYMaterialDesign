@@ -22,13 +22,11 @@ import android.widget.Toast;
 import com.xy.materialdesign.R;
 import com.xy.materialdesign.adapter.XYAdapter;
 import com.xy.materialdesign.adapter.XYBaseAdapter;
-import com.xy.materialdesign.animation.XYItemTouchHelperCallBack;
 import com.xy.materialdesign.divider.DividerItemDecoration;
 import com.xy.materialdesign.divider.GridItemDecoration;
 import com.xy.materialdesign.widget.XYRecyclerView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**

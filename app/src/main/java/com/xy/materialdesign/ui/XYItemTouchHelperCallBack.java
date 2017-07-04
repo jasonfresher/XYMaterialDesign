@@ -1,4 +1,4 @@
-package com.xy.materialdesign.animation;
+package com.xy.materialdesign.ui;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;

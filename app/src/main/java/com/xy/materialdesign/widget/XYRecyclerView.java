@@ -90,6 +90,7 @@ public class XYRecyclerView extends RecyclerView{
 
         @Override
         public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+            Log.d("jason","onItemRangeMoved");
             mWrapAdapter.notifyItemMoved(fromPosition,toPosition);
         }
     }

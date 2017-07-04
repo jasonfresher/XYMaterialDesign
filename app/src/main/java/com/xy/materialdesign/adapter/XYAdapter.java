@@ -1,11 +1,10 @@
 package com.xy.materialdesign.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.xy.materialdesign.R;
-import com.xy.materialdesign.animation.XYItemTouchHelperCallBack;
+import com.xy.materialdesign.ui.XYItemTouchHelperCallBack;
 import com.xy.materialdesign.widget.XYRecyclerView;
 
 import java.util.Collections;
