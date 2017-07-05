@@ -12,11 +12,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xy.materialdesign.R;
@@ -24,7 +22,6 @@ import com.xy.materialdesign.adapter.XYAdapter;
 import com.xy.materialdesign.adapter.XYBaseAdapter;
 import com.xy.materialdesign.divider.DividerItemDecoration;
 import com.xy.materialdesign.divider.GridItemDecoration;
-import com.xy.materialdesign.widget.XYRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +33,7 @@ import java.util.List;
 public class RecyclerViewActivity extends AppCompatActivity{
 
     private Handler handler = new Handler();
-    private XYRecyclerView rv;
+    private RecyclerView rv;
     private List<String> items;
     private XYAdapter xyAdapter;
     private RecyclerView.ItemDecoration dividerItemDecoration;
@@ -67,7 +64,7 @@ public class RecyclerViewActivity extends AppCompatActivity{
                 }, 2000);
             }
         });
-        rv = (XYRecyclerView) findViewById(R.id.recyclerview);
+        rv = (RecyclerView) findViewById(R.id.recyclerview);
         xyAdapter = new XYAdapter(items);
         xyAdapter.setOnItemClickListener(new XYBaseAdapter.OnItemClickListener() {
             @Override
@@ -76,32 +73,8 @@ public class RecyclerViewActivity extends AppCompatActivity{
             }
         });
         rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-        /**
-         * 添加头部view
-         */
-        TextView tv = new TextView(this);
-        tv.setTextSize(20);
-        tv.setGravity(Gravity.CENTER);
-        tv.setText("this is a title");
-        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT);
-        tv.setLayoutParams(params);
-        rv.addHeaderView(tv);
-
-        /**
-         * 添加尾部view
-         */
-        TextView tv2 = new TextView(this);
-        tv2.setTextSize(20);
-        tv2.setGravity(Gravity.CENTER);
-        tv2.setText("this is a footer");
-        RecyclerView.LayoutParams params2 = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT);
-        tv2.setLayoutParams(params2);
-        rv.addFooterView(tv2);
-
         rv.setAdapter(xyAdapter);
         rv.setItemAnimator(new DefaultItemAnimator());
-
         /**
          * 添加条目间隔线
          */

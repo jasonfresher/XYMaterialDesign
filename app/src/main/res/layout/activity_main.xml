@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="10dp"
     tools:context="com.xy.materialdesign.ui.MainActivity">
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -72,6 +73,15 @@
             android:layout_marginTop="16dp"
             android:onClick="toRecyclerView"
             android:layout_marginBottom="5dp"
-            android:text="recyclerView" />
+            android:text="RecyclerView" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:onClick="toHeaderRecyclerView"
+            android:layout_marginBottom="5dp"
+            android:text="带headerView以及footerView的RecyclerView" />
     </android.support.v7.widget.LinearLayoutCompat>
 </LinearLayout>

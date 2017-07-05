@@ -1,9 +1,11 @@
 package com.xy.materialdesign.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.xy.materialdesign.R;
+import com.xy.materialdesign.listeners.XYMoveListener;
 import com.xy.materialdesign.ui.XYItemTouchHelperCallBack;
 import com.xy.materialdesign.widget.XYRecyclerView;
 
@@ -14,7 +16,7 @@ import java.util.List;
  * Created by jason on 2017/6/30.
  */
 
-public class XYAdapter extends XYBaseAdapter<String> implements XYItemTouchHelperCallBack.XYMoveListener{
+public class XYAdapter extends XYBaseAdapter<String> implements XYMoveListener {
 
 
     public XYAdapter(List<String> items) {
@@ -33,12 +35,17 @@ public class XYAdapter extends XYBaseAdapter<String> implements XYItemTouchHelpe
     }
 
     @Override
-    public void onMove(RecyclerView recyclerView, int srcPosition, int targetPosition) {
-        int headerViewCount = 0;
-        if(recyclerView instanceof XYRecyclerView){
-            headerViewCount = ((XYRecyclerView)recyclerView).getHeaderViewCount();
-        }
-        Collections.swap(mItems,srcPosition - 1 == -1 ? 0 : srcPosition-headerViewCount,targetPosition > getItemCount() ? getItemCount() : targetPosition - headerViewCount);
-        notifyItemMoved(srcPosition,targetPosition);
+    public boolean onMove(RecyclerView recyclerView, int srcPosition, int targetPosition) {
+        Collections.swap(mItems, srcPosition, targetPosition);
+        notifyItemMoved(srcPosition, targetPosition);
+        return true;
+    }
+
+    @Override
+    public boolean onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+        int position = viewHolder.getAdapterPosition();
+        mItems.remove(position);
+        notifyItemRemoved(position);
+        return true;
     }
 }

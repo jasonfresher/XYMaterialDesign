@@ -3,6 +3,8 @@ package com.xy.materialdesign.ui;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import com.xy.materialdesign.listeners.XYMoveListener;
+
 /**
  * Created by jason on 2017/7/4.
  */
@@ -11,7 +13,7 @@ public class XYItemTouchHelperCallBack extends ItemTouchHelper.Callback {
 
     private XYMoveListener mXyMoveListener;
 
-    public XYItemTouchHelperCallBack(XYMoveListener listener){
+    public XYItemTouchHelperCallBack(XYMoveListener listener) {
         this.mXyMoveListener = listener;
     }
 
@@ -27,23 +29,20 @@ public class XYItemTouchHelperCallBack extends ItemTouchHelper.Callback {
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder src, RecyclerView.ViewHolder target) {
         int srcPosition = src.getAdapterPosition();
         int targetPosition = target.getAdapterPosition();
-        if(mXyMoveListener!=null)
-            mXyMoveListener.onMove(recyclerView,srcPosition,targetPosition);
-        return false;
+        if (mXyMoveListener != null)
+           return mXyMoveListener.onMove(recyclerView, srcPosition, targetPosition);
+        return true;
     }
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-
+        if (mXyMoveListener != null)
+            mXyMoveListener.onSwiped(viewHolder, direction);
     }
 
     @Override
     public boolean isLongPressDragEnabled() {
         return true;
-    }
-
-    public interface XYMoveListener{
-        void onMove(RecyclerView recyclerView,int srcPosition,int targetPosition);
     }
 
 }

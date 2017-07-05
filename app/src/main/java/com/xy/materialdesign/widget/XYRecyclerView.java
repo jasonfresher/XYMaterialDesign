@@ -84,7 +84,7 @@ public class XYRecyclerView extends RecyclerView{
 
         @Override
         public void onItemRangeRemoved(int positionStart, int itemCount) {
-            Log.d("jason","onItemRangeRemoved");
+            Log.d("jason","onItemRangeRemoved====>" + positionStart);
             mWrapAdapter.notifyItemRangeRemoved(positionStart + mWrapAdapter.getHeaderViewsCount(), itemCount);
         }
 
