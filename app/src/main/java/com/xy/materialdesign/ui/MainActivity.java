@@ -65,4 +65,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,HeaderRecyclerViewActivity.class);
         startActivity(intent);
     }
+
+    public void toNavigationView(View view){
+        Intent intent = new Intent(this,NavigationActivity.class);
+        startActivity(intent);
+    }
 }

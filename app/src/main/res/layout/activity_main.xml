@@ -7,81 +7,97 @@
     android:paddingTop="10dp"
     tools:context="com.xy.materialdesign.ui.MainActivity">
 
-    <android.support.v7.widget.LinearLayoutCompat
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:divider="@drawable/abc_list_divider_mtrl_alpha"
-        app:showDividers="beginning|middle">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="5dp"
-            android:text="Hello World" />
+            android:orientation="vertical"
+            app:divider="@drawable/abc_list_divider_mtrl_alpha"
+            app:showDividers="beginning|middle">
 
-        <android.support.v7.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="5dp"
-            android:onClick="showDialog"
-            android:text="对话框" />
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Hello World" />
 
-        <ProgressBar
-            style="@style/Widget.AppCompat.ProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="16dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:onClick="showDialog"
+                android:text="对话框" />
 
-        <android.support.v7.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="5dp"
-            android:onClick="showListPopupwindow"
-            android:text="显示ListPopupwindow" />
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:onClick="showListPopupwindow"
+                android:text="显示ListPopupwindow" />
 
-        <android.support.v7.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="5dp"
-            android:onClick="showPopupmenuwindow"
-            android:text="显示showPopupmenuwindow" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:onClick="showPopupmenuwindow"
+                android:text="显示showPopupmenuwindow" />
 
-        <android.support.v7.widget.AppCompatEditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="5dp"
-            android:text="呵呵" />
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="呵呵" />
 
-        <android.support.v7.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:onClick="toRecyclerView"
-            android:layout_marginBottom="5dp"
-            android:text="RecyclerView" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:onClick="toRecyclerView"
+                android:text="RecyclerView" />
 
-        <android.support.v7.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:onClick="toHeaderRecyclerView"
-            android:layout_marginBottom="5dp"
-            android:text="带headerView以及footerView的RecyclerView" />
-    </android.support.v7.widget.LinearLayoutCompat>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:onClick="toHeaderRecyclerView"
+                android:text="带headerView以及footerView的RecyclerView" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:onClick="toNavigationView"
+                android:text="Navigation" />
+        </android.support.v7.widget.LinearLayoutCompat>
+    </ScrollView>
 </LinearLayout>
+
+
+
